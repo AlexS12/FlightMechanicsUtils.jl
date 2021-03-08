@@ -1,6 +1,3 @@
-using FlightMechanicsUtils
-using Test
+using SafeTestsets
 
-@testset "FlightMechanicsUtils.jl" begin
-    # Write your tests here.
-end
+@safetestset "Rotations" begin include("rotations.jl") end
