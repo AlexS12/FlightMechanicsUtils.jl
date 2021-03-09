@@ -14,3 +14,12 @@ Modules = [FlightMechanicsUtils]
 Pages   = ["rotations.jl"]
 Private = false
 ```
+
+
+## Atmosphere
+
+```@autodocs
+Modules = [FlightMechanicsUtils]
+Pages   = ["atmosphere.jl"]
+Private = false
+```
