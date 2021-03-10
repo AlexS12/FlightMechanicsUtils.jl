@@ -7,5 +7,6 @@ version = "0.1.0"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
+StaticArrays = "1.0"
 Documenter = "0.26"
 julia = "1.5"
