@@ -144,3 +144,83 @@ function body_angular_velocity_to_quaternion_rates(p, q, r, q0, q1, q2, q3)
 
     return q_dot
 end
+
+
+"""
+    uvw_to_tasαβ(u, v, w)
+
+Calculate true air speed (TAS), angle of attack (α) and angle of side slip (β)
+from velocity expressed in body axis.
+
+# Notes
+
+This function assumes that u, v, w are the body components of the aerodynamic
+speed. This is not true in genreal (wind speed different from zero), as u, v, w
+represent velocity with respect to an inertial reference frame.
+
+# References
+
+1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-6b) (page 78)
+"""
+function uvw_to_tasαβ(u, v, w)
+
+    tas = sqrt(u*u + v*v + w*w)
+    α = atan(w, u)
+    β = asin(v / tas)
+    return [tas, α, β]
+end
+
+
+"""
+    tasαβ_dot_from_uvw_dot(u, v, w, u_dot, v_dot, w_dot)
+
+Calculate time derivatives of velcity expressed as TAS, AOA, AOS.
+
+# Notes
+Note that tas here is not necessarily true air speed. Could also be inertial speed in the
+direction of airspeed. It will concide whith TAS for no wind.
+
+# See also
+
+[`uvw_dot_from_tasαβ_dot`](@ref)
+
+# References
+1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Equation 3.33 (page 44).
+2. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-10) (page 81).
+"""
+function tasαβ_dot_from_uvw_dot(u, v, w, u_dot, v_dot, w_dot)
+
+    # [1] 3.31
+    tas = sqrt(u*u + v*v + w*w)
+    # [1] 3.33a
+    tas_dot = (u * u_dot + v * v_dot + w * w_dot) / tas
+    # [1] 3.33b
+    β_dot = ((u*u + w*w) * v_dot - v * (u * u_dot + w * w_dot)) / (tas^2 * sqrt(u*u + w*w))
+    # [2] 2.3.10b
+    # β_dot = (v_dot * tas - v * tas_dot) / (tas * sqrt(u*u + w*w))
+    # [1] 3.33c
+    α_dot = (w_dot * u - w * u_dot) / (u*u + w*w)
+
+    return [tas_dot, α_dot, β_dot]
+end
+
+
+"""
+    uvw_dot_from_tasαβ_dot(tas, α, β, tas_dot, α_dot, β_dot)
+
+Obatain body velocity derivatives given velocity in wind axis and its derivatives.
+
+# See also
+
+[`tasαβ_dot_from_uvw_dot`](@ref)
+
+# References
+
+1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Derived from equation 3.32 (page 44).
+"""
+function uvw_dot_from_tasαβ_dot(tas, α, β, tas_dot, α_dot, β_dot)
+    u_dot = tas_dot * cos(α) * cos(β) - tas * (α_dot * sin(α) * cos(β) + β_dot * cos(α) * sin(β))
+    v_dot = tas_dot * sin(β) + tas * β_dot * cos(β)
+    w_dot = tas_dot * sin(α) * cos(β) + tas * (α_dot * cos(α) * cos(β) - β_dot * sin(α) * sin(β))
+    return [u_dot, v_dot, w_dot]
+end

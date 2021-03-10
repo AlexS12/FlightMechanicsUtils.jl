@@ -10,7 +10,10 @@ export rigid_body_velocity,
     rigid_body_acceleration,
     body_angular_velocity_to_euler_angles_rates,
     euler_angles_rates_to_body_angular_velocity,
-    body_angular_velocity_to_quaternion_rates
+    body_angular_velocity_to_quaternion_rates,
+    uvw_to_tasαβ,
+    tasαβ_dot_from_uvw_dot,
+    uvw_dot_from_tasαβ_dot
 include("kinematics.jl")
 
 export euler_angles,
