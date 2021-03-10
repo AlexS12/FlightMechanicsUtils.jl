@@ -6,6 +6,9 @@ include("constants.jl")
 export atmosphere_isa
 include("atmosphere.jl")
 
+export rigid_body_velocity, rigid_body_acceleration
+include("kinematics.jl")
+
 export euler_angles,
     quaternions,
     body2horizon,
