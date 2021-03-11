@@ -224,3 +224,24 @@ function uvw_dot_from_tasαβ_dot(tas, α, β, tas_dot, α_dot, β_dot)
     w_dot = tas_dot * sin(α) * cos(β) + tas * (α_dot * cos(α) * cos(β) - β_dot * sin(α) * sin(β))
     return [u_dot, v_dot, w_dot]
 end
+
+
+function climb_theta(γ, α, β, ϕ)
+    a = cos(α) * cos(β)
+    b = sin(ϕ) * sin(β) + cos(ϕ) * sin(α) * cos(β)
+    sq = sqrt(a^2 - sin(γ)^2 + b^2)
+    θ = (a * b + sin(γ) * sq) / (a^2 - sin(γ)^2)
+    θ = atan(θ)
+    return θ
+end
+
+
+function turn_rate_angular_velocity(ψ_dot, θ, ϕ)
+    # w = ψ_dot * k_h
+    # k_h = sin(θ) i_b + sin(ϕ) * cos(θ) j_b + cos(θ) * sin(ϕ)
+    # w = p * i_b + q * j_b + r * k_b
+    p = - ψ_dot * sin(θ)
+    q = ψ_dot * sin(ϕ) * cos(θ)
+    r = ψ_dot * cos(θ) * cos(ϕ)
+    return [p, q, r]
+end
