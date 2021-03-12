@@ -234,14 +234,3 @@ function climb_theta(γ, α, β, ϕ)
     θ = atan(θ)
     return θ
 end
-
-
-function turn_rate_angular_velocity(ψ_dot, θ, ϕ)
-    # w = ψ_dot * k_h
-    # k_h = sin(θ) i_b + sin(ϕ) * cos(θ) j_b + cos(θ) * sin(ϕ)
-    # w = p * i_b + q * j_b + r * k_b
-    p = - ψ_dot * sin(θ)
-    q = ψ_dot * sin(ϕ) * cos(θ)
-    r = ψ_dot * cos(θ) * cos(ϕ)
-    return [p, q, r]
-end
