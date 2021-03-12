@@ -93,7 +93,7 @@ end
     @test isapprox([u, v, w], uvw)
 
     uvw_dot = [5, 1, 10]
-    tasαβ_dot = tasαβ_dot_from_uvw_dot(uvw..., uvw_dot...)
-    uvw_dot_ = uvw_dot_from_tasαβ_dot(uvw_to_tasαβ(uvw...)..., tasαβ_dot...)
+    tasαβ_dot = uvw_dot_to_tasαβ_dot(uvw..., uvw_dot...)
+    uvw_dot_ = tasαβ_dot_to_uvw_dot(uvw_to_tasαβ(uvw...)..., tasαβ_dot...)
     @test isapprox(uvw_dot_, uvw_dot)
 end
