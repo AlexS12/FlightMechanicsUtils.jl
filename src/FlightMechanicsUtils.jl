@@ -6,6 +6,17 @@ include("constants.jl")
 export atmosphere_isa
 include("atmosphere.jl")
 
+export rigid_body_velocity,
+    rigid_body_acceleration,
+    body_angular_velocity_to_euler_angles_rates,
+    euler_angles_rates_to_body_angular_velocity,
+    body_angular_velocity_to_quaternion_rates,
+    uvw_to_tasαβ,
+    uvw_dot_to_tasαβ_dot,
+    tasαβ_dot_to_uvw_dot,
+    rate_of_climb_constrain_no_wind
+include("kinematics.jl")
+
 export euler_angles,
     quaternions,
     body2horizon,
