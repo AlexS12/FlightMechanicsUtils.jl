@@ -97,3 +97,17 @@ end
     uvw_dot_ = tasαβ_dot_to_uvw_dot(uvw_to_tasαβ(uvw...)..., tasαβ_dot...)
     @test isapprox(uvw_dot_, uvw_dot)
 end
+
+
+@testset "Rate of climb constrain" begin
+    # wings-level, no sideslip: θ = α + γ
+    θ = rate_of_climb_constrain_no_wind(0.1, 0.05, 0, 0)
+    @test isapprox(θ, 0.1 + 0.05)
+
+    # Check case:  Stevens, B. L., Lewis, F. L., (1992).
+    # Aircraft control and simulation: dynamics, controls design, and autonomous systems.
+    # John Wiley & Sons. (Section 3.6, figure 3.6-2, page 192)
+    θ =rate_of_climb_constrain_no_wind(0.0, deg2rad(13.7), deg2rad(0.0292), deg2rad(78.3))
+    # Take into account that this check case is a full trim not just the kinematic realtionship
+    @test isapprox(rad2deg(θ), 2.87, rtol=0.01)
+end
