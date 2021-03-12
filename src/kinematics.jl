@@ -226,7 +226,21 @@ function tasαβ_dot_to_uvw_dot(tas, α, β, tas_dot, α_dot, β_dot)
 end
 
 
-function climb_theta(γ, α, β, ϕ)
+@doc raw"""
+    rate_of_climb_constrain_no_wind(γ, α, β, ϕ)
+
+Calculate pitch angle (θ rad) to obtain a flight path angle (γ rad) at certain
+angle of attack (α rad), angle of sideslip (β rad) and roll (ϕ rad).
+
+Inertial velocity and aerodynamic velocity are equivalent in the absence of wind:
+
+`` v_{cg-e}^e = R_{eb} R_{bw} v_{cg-air}^w ``
+
+# References
+
+1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. (Section 3.6, equation 3.6-3, page 187)
+"""
+function rate_of_climb_constrain_no_wind(γ, α, β, ϕ)
     a = cos(α) * cos(β)
     b = sin(ϕ) * sin(β) + cos(ϕ) * sin(α) * cos(β)
     sq = sqrt(a^2 - sin(γ)^2 + b^2)

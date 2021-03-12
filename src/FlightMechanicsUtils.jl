@@ -13,7 +13,8 @@ export rigid_body_velocity,
     body_angular_velocity_to_quaternion_rates,
     uvw_to_tasαβ,
     uvw_dot_to_tasαβ_dot,
-    tasαβ_dot_to_uvw_dot
+    tasαβ_dot_to_uvw_dot,
+    rate_of_climb_constrain_no_wind
 include("kinematics.jl")
 
 export euler_angles,
