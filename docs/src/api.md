@@ -1,5 +1,20 @@
 # API
 
+## Constants
+
+### Air
+
+```@docs
+γ_AIR
+R_AIR
+```
+
+### Earth
+
+```@docs
+gD
+```
+
 ## Rotations
 
 ### Coordinate systems
