@@ -29,3 +29,51 @@ using Test
     m1_ = translate_forces_moments([10, 20, 30], m2, [10, 20, 30], [1, 1, 1])
     @test isapprox([50, 60, 90], m1_)
 end
+
+
+@testset "Steiner" begin
+    # No point translation
+    p1 = [0, 0, 0]
+    p2 = p1
+    inertia = [
+        1 0 0
+        0 2 0
+        0 0 3
+    ]
+    mass = 10
+    @test isapprox(steiner_inertia(p1, inertia, mass, p2), inertia)
+
+    # Point with no inertia
+    p1 = [0, 0, 0]
+    p2 = [10, 0, 0]
+    inertia = zeros(3, 3)
+    p2 = [10, 0, 0]
+    inertia = zeros(3, 3)
+    mass = 10
+
+    exp_inertia = [
+        0 0 0
+        0 1000 0
+        0 0 1000
+    ]
+    @test isapprox(steiner_inertia(p1, inertia, mass, p2), exp_inertia)
+
+    # Point with with inertia
+    p1 = [0, 0, 0]
+    p2 = [10, 0, 0]
+    inertia = [
+        1 0 0
+        0 2 0
+        0 0 3
+    ]
+    mass = 10
+
+    exp_inertia = [
+        0 0 0
+        0 1000 0
+        0 0 1000
+    ] + inertia
+
+    @test isapprox(steiner_inertia(p1, inertia, mass, p2), exp_inertia)
+
+end
