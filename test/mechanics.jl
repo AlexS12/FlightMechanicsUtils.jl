@@ -77,3 +77,25 @@ end
     @test isapprox(steiner_inertia(p1, inertia, mass, p2), exp_inertia)
 
 end
+
+
+@testset "Coordinated turn bank angle constrain" begin
+    # Check case:  Stevens, B. L., Lewis, F. L., (1992).
+    # Aircraft control and simulation: dynamics, controls design, and autonomous systems.
+    # John Wiley & Sons. (Section 3.6, figure 3.6-2, page 192)
+    ϕ = coordinated_turn_bank(0.3, deg2rad(13.7), deg2rad(0.0292), 502*0.3048, 0.0)
+    # Take into account that this check case is a full trim not just the kinematic realtionship
+    @test isapprox(rad2deg(ϕ), 78.3, atol=0.05)
+
+    # Opposite turn
+    ϕ = coordinated_turn_bank(-0.3, deg2rad(13.7), deg2rad(0.0292), 502*0.3048, 0.0)
+    @test isapprox(rad2deg(ϕ), -78.3, atol=0.05)
+
+    # Null turn rate
+    ϕ = coordinated_turn_bank(0, deg2rad(13.7), deg2rad(0.0292), 502*0.3048, 0.0)
+    @test isapprox(rad2deg(ϕ), 0)
+
+    # For regression testing (no check values found in Stevens)
+    ϕ = coordinated_turn_bank(0.1, deg2rad(13.7), deg2rad(0.0292), 502*0.3048, 10)
+    @test isapprox(rad2deg(ϕ), 51.16941949883969)
+end
