@@ -18,7 +18,7 @@ export rigid_body_velocity,
 include("kinematics.jl")
 
 
-export translate_forces_moments, steiner_inertia
+export translate_forces_moments, steiner_inertia, coordinated_turn_bank
 include("mechanics.jl")
 
 export euler_angles,

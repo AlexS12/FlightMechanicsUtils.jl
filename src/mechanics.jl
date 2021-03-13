@@ -31,3 +31,33 @@ function steiner_inertia(cg, inertia1, mass, p2)
     inertia2 = inertia1 + mass * ((r' * r) * I - r*r')
     return inertia2
 end
+
+
+"""
+    coordinated_turn_bank(ψ_dot, α, β, tas, γ)
+
+Calculate roll angle (ϕ) for a given turn rate (ψ_dot), angle of attack (α),
+angle of sideslie (β), tas and flight path angle (γ) in the absence of wind.
+
+Imposes sum of forces along y body axis equal to zero.
+"""
+function coordinated_turn_bank(ψ_dot, α, β, tas, γ)
+    G = ψ_dot * tas / gD
+
+    if abs(γ) < 1e-8
+        ϕ = G * cos(β) / (cos(α) - G * sin(α) * sin(β))
+        ϕ = atan(ϕ)
+    else
+        a = 1 - G * tan(α) * sin(β)
+        b = sin(γ) / cos(β)
+        c = 1 + G^2 * cos(β)^2
+
+        sq = sqrt(c * (1 - b^2) + G^2 * sin(β)^2)
+
+        num = (a - b^2) + b * tan(α) * sq
+        den = a ^ 2 - b^2 * (1 + c * tan(α)^2)
+
+        ϕ = atan(G * cos(β) / cos(α) * num / den)
+    end
+    return ϕ
+end
