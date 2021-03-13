@@ -40,3 +40,16 @@ Modules = [FlightMechanicsUtils]
 Pages   = ["mechanics.jl"]
 Private = false
 ```
+
+
+## Anemometry
+
+- Calibrated
+- Equivalent
+- True
+
+```@autodocs
+Modules = [FlightMechanicsUtils]
+Pages   = ["anemometry.jl"]
+Private = false
+```
