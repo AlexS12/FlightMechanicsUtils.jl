@@ -1,5 +1,20 @@
 # API
 
+## Constants
+
+### Air
+
+```@docs
+γ_AIR
+R_AIR
+```
+
+### Earth
+
+```@docs
+gD
+```
+
 ## Rotations
 
 ### Coordinate systems
@@ -38,5 +53,18 @@ Private = false
 ```@autodocs
 Modules = [FlightMechanicsUtils]
 Pages   = ["mechanics.jl"]
+Private = false
+```
+
+
+## Anemometry
+
+- Calibrated
+- Equivalent
+- True
+
+```@autodocs
+Modules = [FlightMechanicsUtils]
+Pages   = ["anemometry.jl"]
 Private = false
 ```
