@@ -12,4 +12,5 @@ makedocs(
 deploydocs(
     repo = "github.com:AlexS12/FlightMechanicsUtils.jl.git",
     push_preview=true,
+    devbranch = "main"
 )
