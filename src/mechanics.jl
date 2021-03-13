@@ -4,6 +4,8 @@
 Calculate equivalent moment at point 2 (p2) given the forces (forces_1)
  and moments (moments_1) at point 1 (p1).
 
+`` r = p_1 - p_2 ``
+
 ``M_{2} = M_{1} + r \times F_{1}``
 """
 function translate_forces_moments(forces_1, moments_1, p1, p2)
