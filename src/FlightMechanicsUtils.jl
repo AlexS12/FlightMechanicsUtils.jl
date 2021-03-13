@@ -17,6 +17,10 @@ export rigid_body_velocity,
     rate_of_climb_constrain_no_wind
 include("kinematics.jl")
 
+
+export translate_forces_moments, steiner_inertia, coordinated_turn_bank
+include("mechanics.jl")
+
 export euler_angles,
     quaternions,
     body2horizon,

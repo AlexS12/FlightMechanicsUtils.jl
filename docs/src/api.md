@@ -32,3 +32,11 @@ Modules = [FlightMechanicsUtils]
 Pages   = ["kinematics.jl"]
 Private = false
 ```
+
+## Mechanics
+
+```@autodocs
+Modules = [FlightMechanicsUtils]
+Pages   = ["mechanics.jl"]
+Private = false
+```
