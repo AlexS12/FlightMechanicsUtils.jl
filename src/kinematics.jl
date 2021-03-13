@@ -182,7 +182,7 @@ direction of airspeed. It will concide whith TAS for no wind.
 
 # See also
 
-[`uvw_dot_from_tasαβ_dot`](@ref)
+[`tasαβ_dot_to_uvw_dot`](@ref)
 
 # References
 1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Equation 3.33 (page 44).
@@ -212,7 +212,7 @@ Obatain body velocity derivatives given velocity in wind axis and its derivative
 
 # See also
 
-[`tasαβ_dot_from_uvw_dot`](@ref)
+[`uvw_dot_to_tasαβ_dot`](@ref)
 
 # References
 
