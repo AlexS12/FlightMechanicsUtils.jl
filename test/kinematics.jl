@@ -92,6 +92,18 @@ end
     u, v, w = wind2body(tas, 0, 0, α, β)
     @test isapprox([u, v, w], uvw)
 
+    uvw = [100, 0, 0]  # m/s
+    rv = uvw_to_tasαβ(uvw...)
+    @test isapprox(rv, [100, 0, 0])
+
+    uvw = 10, 0, 10  # m/s
+    rv = uvw_to_tasαβ(uvw...)
+    @test isapprox(rv, [sqrt(200), atan(1), 0])
+
+    uvw = [10, 10, 0]  # m/s
+    rv = uvw_to_tasαβ(uvw...)
+    @test isapprox(rv, [sqrt(200), 0, asin(10/sqrt(200))])
+
     uvw_dot = [5, 1, 10]
     tasαβ_dot = uvw_dot_to_tasαβ_dot(uvw..., uvw_dot...)
     uvw_dot_ = tasαβ_dot_to_uvw_dot(uvw_to_tasαβ(uvw...)..., tasαβ_dot...)
