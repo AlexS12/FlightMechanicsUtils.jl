@@ -81,8 +81,8 @@ end
 """
     body2horizon(x, y, z, ψ, θ, ϕ)
 
-Transform the vector coordintes (x, y, z) given in body axis to local horizon
-given the Euler angles (ψ, θ, ϕ) (rad).
+Transform the vector coordintes (x, y, z) given in body axis to local horizon given the
+Euler angles (ψ, θ, ϕ) (rad).
 """
 function body2horizon(x, y, z, ψ, θ, ϕ)
     v = @SVector [x, y, z]
@@ -94,8 +94,8 @@ end
 """
     horizon2body(x, y, z, ψ, θ, ϕ)
 
-Transform the vector coordintes (x, y, z) given in local horizon axis to body
-given the Euler angles (ψ, θ, ϕ) (rad).
+Transform the vector coordintes (x, y, z) given in local horizon axis to body given the
+Euler angles (ψ, θ, ϕ) (rad).
 """
 function horizon2body(x, y, z, ψ, θ, ϕ)
     v = @SVector [x, y, z]
@@ -107,8 +107,8 @@ end
 """
     body2horizon(x, y, z, q0, q1, q2, q3)
 
-Transform the vector coordintes (x, y, z) given in body axis to local horizon
-given the quaternions ``q_0, q_1, q_2, q_3``.
+Transform the vector coordintes (x, y, z) given in body axis to local horizon given the
+quaternions ``q_0, q_1, q_2, q_3``.
 """
 function body2horizon(x, y, z, q0, q1, q2, q3)
     v = @SVector [x, y, z]
@@ -120,8 +120,8 @@ end
 """
     horizon2body(x, y, z, q0, q1, q2, q3)
 
-Transform the vector coordintes (x, y, z) given in local horizon axis to body
-given the quaternions ``q_0, q_1, q_2, q_3``.
+Transform the vector coordintes (x, y, z) given in local horizon axis to body given the
+quaternions ``q_0, q_1, q_2, q_3``.
 """
 function horizon2body(x, y, z, q0, q1, q2, q3)
     v = @SVector [x, y, z]
@@ -133,8 +133,8 @@ end
 """
     wind2body(x, y, z, α, β)
 
-Transform the vector coordintes (x, y, z) given in wind axis to body
-given the angle of attack (α) and the angle of sideslip (β) (rad).
+Transform the vector coordintes (x, y, z) given in wind axis to body given the angle of
+attack (α) and the angle of sideslip (β) (rad).
 """
 function wind2body(x, y, z, α, β)
     v = @SVector [x, y, z]
@@ -146,8 +146,8 @@ end
 """
     body2wind(x, y, z, α, β)
 
-Transform the vector coordintes (x, y, z) given in body axis to wind
-given the angle of attack (α) and the angle of sideslip (β) (rad).
+Transform the vector coordintes (x, y, z) given in body axis to wind given the angle of
+attack (α) and the angle of sideslip (β) (rad).
 """
 function body2wind(x, y, z, α, β)
     v = @SVector [x, y, z]
@@ -159,8 +159,8 @@ end
 """
     wind2horizon(x, y, z, χ, γ, μ)
 
-Transform the vector coordintes (x, y, z) given in wind axis to local horizon
-given the velocity angles (χ, γ, μ) (rad).
+Transform the vector coordintes (x, y, z) given in wind axis to local horizon given the
+velocity angles (χ, γ, μ) (rad).
 """
 function wind2horizon(x, y, z, χ, γ, μ)
     v = @SVector [x, y, z]
@@ -172,8 +172,8 @@ end
 """
     horizon2wind(x, y, z, χ, γ, μ)
 
-Transform the vector coordintes (x, y, z) given in local horizon axis to wind
-given the velocity angles (χ, γ, μ) (rad).
+Transform the vector coordintes (x, y, z) given in local horizon axis to wind given the
+velocity angles (χ, γ, μ) (rad).
 """
 function horizon2wind(x, y, z, χ, γ, μ)
     v = @SVector [x, y, z]

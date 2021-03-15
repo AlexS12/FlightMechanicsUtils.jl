@@ -3,12 +3,11 @@
 
 Calculate rigid solid velocity field.
 
-Return velocity of a point Q of a rigid solid given the velocity of a
-point P (vel_P), the rotational velocity of the solid (ω) and the relative
-position of Q with respect to P.
+Return velocity of a point Q of a rigid solid given the velocity of a point P (vel_P), the
+rotational velocity of the solid (ω) and the relative position of Q with respect to P.
 
-If the reference frame 1 is attached to the solid and the velocity is
-calculated with respect to reference frame 0:
+If the reference frame 1 is attached to the solid and the velocity is calculated with
+respect to reference frame 0:
 
 ``v_{10}^{Q} = v_{10}^{P} + \omega_{10} \times r^{PQ}``
 
@@ -34,10 +33,9 @@ end
 
 Calcualte rigid body acceleration field.
 
-Return the acceleration of a point Q of a rigid solid given the acceleration
-of a point P (acc_P), the rotational velocity of the solid (ω), the rotational
-acceleration of the solid (ω_dot) and the relative position of Q with respect
-to P.
+Return the acceleration of a point Q of a rigid solid given the acceleration of a point P
+(acc_P), the rotational velocity of the solid (ω), the rotational acceleration of the solid
+(ω_dot) and the relative position of Q with respect to P.
 
 ``a_{10}^{Q} = a_{10}^{P} + \omega_{10} \times (\omega_{10} \times r^{PQ}) + \dot{\omega}_{10} \times r^{PQ}``
 
@@ -60,13 +58,12 @@ end
 """
     pqr_2_ψθϕ_dot(p, q, r, ψ, θ, ϕ)
 
-Transform body angular velocity (p, q, r) [rad/s] to Euler angles rates
-(ψ_dot, θ_dot, ϕ_dot) [rad/s] given the euler angles (θ, ϕ) [rad] using
-kinematic angular equations.
+Transform body angular velocity (p, q, r) [rad/s] to Euler angles rates (ψ_dot, θ_dot,
+ϕ_dot) [rad/s] given the euler angles (θ, ϕ) [rad] using kinematic angular equations.
 
 # See also
 
-[`euler_angles_rates_to_body_angular_velocity`](@ref), [`pqr_2_quat_dot`](@ref)
+[`ψθϕ_dot_2_pqr`](@ref), [`pqr_2_quat_dot`](@ref)
 
 # References
 
@@ -89,9 +86,8 @@ end
 """
     ψθϕ_dot_2_pqr(ψ_dot, θ_dot, ϕ_dot, ψ, θ, ϕ)
 
-Transform Euler angles rates (ψ_dot, θ_dot, ϕ_dot) [rad/s] to body angular
-velocity (p, q, r) [rad/s] given the euler angles (θ, ϕ) [rad] using
-kinematic angular equations.
+Transform Euler angles rates (ψ_dot, θ_dot, ϕ_dot) [rad/s] to body angular velocity (p, q,
+r) [rad/s] given the euler angles (θ, ϕ) [rad] using kinematic angular equations.
 
 # See also
 
@@ -146,14 +142,14 @@ end
 """
     uvw_to_tasαβ(u, v, w)
 
-Calculate true air speed (TAS), angle of attack (α) and angle of side slip (β)
-from velocity expressed in body axis.
+Calculate true air speed (TAS), angle of attack (α) and angle of side slip (β) from velocity
+expressed in body axis.
 
 # Notes
 
-This function assumes that u, v, w are the body components of the aerodynamic
-speed. This is not true in genreal (wind speed different from zero), as u, v, w
-represent velocity with respect to an inertial reference frame.
+This function assumes that u, v, w are the body components of the aerodynamic speed. This is
+not true in genreal (wind speed different from zero), as u, v, w represent velocity with
+respect to an inertial reference frame.
 
 # References
 
@@ -226,8 +222,8 @@ end
 @doc raw"""
     rate_of_climb_constrain_no_wind(γ, α, β, ϕ)
 
-Calculate pitch angle (θ rad) to obtain a flight path angle (γ rad) at certain
-angle of attack (α rad), angle of sideslip (β rad) and roll (ϕ rad).
+Calculate pitch angle (θ rad) to obtain a flight path angle (γ rad) at certain angle of
+attack (α rad), angle of sideslip (β rad) and roll (ϕ rad).
 
 Inertial velocity and aerodynamic velocity are equivalent in the absence of wind:
 
