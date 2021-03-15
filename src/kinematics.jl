@@ -58,7 +58,7 @@ end
 
 
 """
-    body_angular_velocity_to_euler_angles_rates(p, q, r, ψ, θ, ϕ)
+    pqr_2_ψθϕ_dot(p, q, r, ψ, θ, ϕ)
 
 Transform body angular velocity (p, q, r) [rad/s] to Euler angles rates
 (ψ_dot, θ_dot, ϕ_dot) [rad/s] given the euler angles (θ, ϕ) [rad] using
@@ -66,13 +66,13 @@ kinematic angular equations.
 
 # See also
 
-[`euler_angles_rates_to_body_angular_velocity`](@ref), [`body_angular_velocity_to_quaternion_rates`](@ref)
+[`euler_angles_rates_to_body_angular_velocity`](@ref), [`pqr_2_quat_dot`](@ref)
 
 # References
 
 1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-4) (page 20)
 """
-function body_angular_velocity_to_euler_angles_rates(p, q, r, θ, ϕ)
+function pqr_2_ψθϕ_dot(p, q, r, θ, ϕ)
 
     sθ, cθ = sin(θ), cos(θ)
     sϕ, cϕ = sin(ϕ), cos(ϕ)
@@ -87,7 +87,7 @@ end
 
 
 """
-    euler_angles_rates_to_body_angular_velocity(ψ_dot, θ_dot, ϕ_dot, ψ, θ, ϕ)
+    ψθϕ_dot_2_pqr(ψ_dot, θ_dot, ϕ_dot, ψ, θ, ϕ)
 
 Transform Euler angles rates (ψ_dot, θ_dot, ϕ_dot) [rad/s] to body angular
 velocity (p, q, r) [rad/s] given the euler angles (θ, ϕ) [rad] using
@@ -95,13 +95,13 @@ kinematic angular equations.
 
 # See also
 
-[`body_angular_velocity_to_euler_angles_rates`](@ref)
+[`pqr_2_ψθϕ_dot`](@ref)
 
 # References
 
 1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-3) (page 20)
 """
-function euler_angles_rates_to_body_angular_velocity(ψ_dot, θ_dot, ϕ_dot, θ, ϕ)
+function ψθϕ_dot_2_pqr(ψ_dot, θ_dot, ϕ_dot, θ, ϕ)
 
     sθ, cθ = sin(θ), cos(θ)
     sϕ, cϕ = sin(ϕ), cos(ϕ)
@@ -115,20 +115,20 @@ end
 
 
 """
-    body_angular_velocity_to_quaternion_rates(p, q, r, q0, q1, q2, q3)
+    pqr_2_quat_dot(p, q, r, q0, q1, q2, q3)
 
 Transform body angular velocity (p, q, r) [rad/s] to quaternion rates [1/s].
 
 # See also
 
-[`body_angular_velocity_to_euler_angles_rates`](@ref)
+[`pqr_2_ψθϕ_dot`](@ref)
 
 # References
 
 1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.8-15) (page 51)
 
 """
-function body_angular_velocity_to_quaternion_rates(p, q, r, q0, q1, q2, q3)
+function pqr_2_quat_dot(p, q, r, q0, q1, q2, q3)
 
     Ω = [
         0 -p -q -r;
