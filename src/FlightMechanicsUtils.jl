@@ -1,5 +1,9 @@
 module FlightMechanicsUtils
 
+using LinearAlgebra
+using StaticArrays
+
+
 export γ_AIR, R_AIR, gD
 include("constants.jl")
 
@@ -16,7 +20,6 @@ export rigid_body_velocity,
     tasαβ_dot_to_uvw_dot,
     rate_of_climb_constrain_no_wind
 include("kinematics.jl")
-
 
 export translate_forces_moments, steiner_inertia, coordinated_turn_bank
 include("mechanics.jl")

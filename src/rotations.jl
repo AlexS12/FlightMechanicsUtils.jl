@@ -1,6 +1,3 @@
-using StaticArrays
-
-
 """
     rotation_matrix_zyx(α1, α2, α3)
 

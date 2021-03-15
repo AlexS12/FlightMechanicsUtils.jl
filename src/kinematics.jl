@@ -1,6 +1,3 @@
-using LinearAlgebra
-
-
 @doc raw"""
     rigid_body_velocity(vel_P, ω, r_PQ)
 
@@ -39,7 +36,7 @@ Calcualte rigid body acceleration field.
 
 Return the acceleration of a point Q of a rigid solid given the acceleration
 of a point P (acc_P), the rotational velocity of the solid (ω), the rotational
-acceleration of the solid (ω_dot) and the relative position of Q with respect 
+acceleration of the solid (ω_dot) and the relative position of Q with respect
 to P.
 
 ``a_{10}^{Q} = a_{10}^{P} + \omega_{10} \times (\omega_{10} \times r^{PQ}) + \dot{\omega}_{10} \times r^{PQ}``
