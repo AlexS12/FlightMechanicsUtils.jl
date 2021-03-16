@@ -16,7 +16,7 @@ const R_AIR = 287.05287
 
 # ------------------------ Earth ------------------------
 """
-gD = 9.80665  (m/s²)
+    gD = 9.80665  (m/s²)
 
 Down component of gravity acceleration at Earth surface at 45º geodetic latitude.
 
