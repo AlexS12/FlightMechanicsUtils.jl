@@ -22,8 +22,7 @@ const R_AIR = 287.05287
 """
     gD = 9.80665  (m/s²)
 
-Down component of gravity acceleration at Earth surface at 45º
-geodetic latitude.
+Down component of gravity acceleration at Earth surface at 45º geodetic latitude.
 
 1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (page 33)
 """

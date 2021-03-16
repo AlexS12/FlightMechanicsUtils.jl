@@ -67,19 +67,19 @@ end
 @testset "Angular kinematic equations" begin
     # Null Euler angles
     pqr = [0.5, 0.3, 0.7]
-    euler_angles_rates = body_angular_velocity_to_euler_angles_rates(pqr..., 0, 0)
+    euler_angles_rates = pqr_2_ψθϕ_dot(pqr..., 0, 0)
     @test isapprox(euler_angles_rates, pqr[end:-1:1])
 
     ψθϕ_dot = [0.5, 0.3, 0.7]
-    pqr_ = euler_angles_rates_to_body_angular_velocity(ψθϕ_dot..., 0, 0)
+    pqr_ = ψθϕ_dot_2_pqr(ψθϕ_dot..., 0, 0)
     @test isapprox(pqr_, ψθϕ_dot[end:-1:1])
 
     # Reciprocal relationships
     θ = 0.15  # rad
     ϕ = 0.6  # rad
     pqr = [0.5, 0.3, 0.7]
-    euler_angles_rates = body_angular_velocity_to_euler_angles_rates(pqr..., θ, ϕ)
-    pqr_ = euler_angles_rates_to_body_angular_velocity(euler_angles_rates..., θ, ϕ)
+    euler_angles_rates = pqr_2_ψθϕ_dot(pqr..., θ, ϕ)
+    pqr_ = ψθϕ_dot_2_pqr(euler_angles_rates..., θ, ϕ)
     @test isapprox(pqr, pqr_)
 
     # TODO: test body_angular_velocity_to_quaternion_rates

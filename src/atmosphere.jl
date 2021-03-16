@@ -1,7 +1,7 @@
 """
     atmosphere_isa(height)
-Calculate temperature, pressure, density and sound velocity for the
-given geopotential height according to International Standard Atmosphere 1976.
+Calculate temperature, pressure, density and sound velocity for the given geopotential
+height according to International Standard Atmosphere 1976.
 
 # References
 1.U.S. Standard Atmosphere, 1976, U.S. Government Printing Office, Washington, D.C., 1976
