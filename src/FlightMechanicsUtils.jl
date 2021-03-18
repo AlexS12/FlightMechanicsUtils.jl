@@ -6,6 +6,8 @@ using StaticArrays
 
 export γ_AIR, R_AIR
 export gD
+export RAD2DEG, DEG2RAD, M2FT, FT2M, KEL2RANK, RANK2KEL, KG2LB, LB2KG, SLUG2KG, KG2SLUG
+export PSF2PA, PA2PSF, SLUGFT32KGM3, KGM32SLUGFT3
 include("constants.jl")
 
 export atmosphere_isa
