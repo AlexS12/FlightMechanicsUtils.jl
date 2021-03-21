@@ -28,6 +28,12 @@ Run tests:
 
 ## What's new
 
+### v0.1.2-dev
+
+#### Enhancements
+
+- `coordinated_turn_bank(ψ_dot, α, β, tas, γ[, g])` now accepts gravity as optional argument.
+
 ### v.0.1.1
 
 Initial [release](https://github.com/AlexS12/FlightMechanicsUtils.jl/releases/tag/v0.1.1).
