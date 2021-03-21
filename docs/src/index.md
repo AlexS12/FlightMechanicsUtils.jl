@@ -30,7 +30,7 @@ Run tests:
 
 ### v.0.1.1
 
-Initial release.
+Initial [release](https://github.com/AlexS12/FlightMechanicsUtils.jl/releases/tag/v0.1.1).
 
 ## Contents
 
