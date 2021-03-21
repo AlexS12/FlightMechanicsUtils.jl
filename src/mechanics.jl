@@ -33,15 +33,23 @@ end
 
 
 """
-    coordinated_turn_bank(ψ_dot, α, β, tas, γ)
+    coordinated_turn_bank(ψ_dot, α, β, tas, γ[, g])
 
-Calculate roll angle (ϕ) for a given turn rate (ψ_dot), angle of attack (α), angle of
-sideslip (β), tas and flight path angle (γ) in the absence of wind.
+Calculate roll angle (ϕ) [rad] for a given turn rate, angle of attack, angle of sideslip,
+tas and flight path angle in the absence of wind for a coordinated turn bank.
 
 Imposes sum of forces along y body axis equal to zero.
+
+# Arguments
+- `ψ_dot`: turn rate (rad/s).
+- `α`: angle of attack (rad).
+- `β`: angle of sideslip (rad).
+- `tas`: true air speed (m/s).
+- `γ`: flight path angle (rad).
+- `g`: gravity (m/s²). Optional. Default value is `gD`.
 """
-function coordinated_turn_bank(ψ_dot, α, β, tas, γ)
-    G = ψ_dot * tas / gD
+function coordinated_turn_bank(ψ_dot, α, β, tas, γ, g=gD)
+    G = ψ_dot * tas / g
 
     if abs(γ) < 1e-8
         ϕ = G * cos(β) / (cos(α) - G * sin(α) * sin(β))
