@@ -28,6 +28,12 @@ export wind2body, wind2horizon
 export horizon2body, horizon2wind
 include("rotations.jl")
 
+export Ellipsoid
+export Clarke1866, Clarke1880, International, Bessel, Everest, ModifiedEverest,
+AustralianNational, SouthAmerican1969, Airy, ModifiedAiry, Hough, Fischer1960SouthAsia,
+Fischer1960Mercury, Fischer1968, WGS60, WGS66, WGS72, WGS84
+include("ellipsoid.jl")
+
 export qc2cas, qc2eas, qc2tas
 export cas2eas, cas2tas
 export eas2cas, eas2tas
