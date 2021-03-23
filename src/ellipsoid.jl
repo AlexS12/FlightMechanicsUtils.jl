@@ -99,6 +99,7 @@ Transform geodetic latitude, longitude (rad) and ellipsoidal height (m) to ECEF 
 given ellipsoid (default ellipsoid is WGS84).
 
 # References
+
 1. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American Institute of Aeronautics and Astronautics. (Page 75, equations 4.20, 4.21, 4.22)
 """
 function llh2ecef(lat, lon, height; ellipsoid=WGS84)
@@ -132,9 +133,9 @@ although the latter implementation is commented in the code.
  can be found in [2] equation (16) but has not been implemented.
 
  # References
+
 1. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey review, 23(181), 323-327.
 2. Bowring, B. R. (1985). The accuracy of geodetic latitude and height equations. Survey Review, 28(218), 202-206.
-
 """
 function ecef2llh(xecef, yecef, zecef; ellipsoid=WGS84)
 
