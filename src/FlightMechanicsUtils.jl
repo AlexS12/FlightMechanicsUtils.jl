@@ -30,8 +30,9 @@ include("rotations.jl")
 
 export Ellipsoid
 export Clarke1866, Clarke1880, International, Bessel, Everest, ModifiedEverest,
-AustralianNational, SouthAmerican1969, Airy, ModifiedAiry, Hough, Fischer1960SouthAsia,
-Fischer1960Mercury, Fischer1968, WGS60, WGS66, WGS72, WGS84
+    AustralianNational, SouthAmerican1969, Airy, ModifiedAiry, Hough, Fischer1960SouthAsia,
+    Fischer1960Mercury, Fischer1968, WGS60, WGS66, WGS72, WGS84
+export llh2ecef, ecef2llh
 include("ellipsoid.jl")
 
 export qc2cas, qc2eas, qc2tas

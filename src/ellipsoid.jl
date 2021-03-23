@@ -90,3 +90,86 @@ const WGS60 = Ellipsoid(6378165.0, 298.3, "WGS60")
 const WGS66 = Ellipsoid(6378145.0, 298.25, "WGS66")
 const WGS72 = Ellipsoid(6378135.0, 298.26, "WGS72")
 const WGS84 = Ellipsoid(6378137.0, 298.257223563, "WGS84")
+
+
+"""
+    llh2ecef(lat, lon, height; ellipsoid=WGS84)
+
+Transform geodetic latitude, longitude (rad) and ellipsoidal height (m) to ECEF for the
+given ellipsoid (default ellipsoid is WGS84).
+
+# References
+1. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American Institute of Aeronautics and Astronautics. (Page 75, equations 4.20, 4.21, 4.22)
+"""
+function llh2ecef(lat, lon, height; ellipsoid=WGS84)
+    f = ellipsoid.f
+    a = ellipsoid.a
+    e2 = ellipsoid.e2
+
+    var = a / sqrt(1.0 - e2 * sin(lat)*sin(lat))
+
+    px = (var + height) * cos(lat)*cos(lon)
+    py = (var + height) * cos(lat)*sin(lon)
+    pz = (var * (1.0 - e2) + height)* sin(lat)
+
+    return [px, py, pz]
+end
+
+
+"""
+    ecef2llh(xecef, yecef, zecef; ellipsoid=WGS84)
+
+Transform ECEF coordinates to geodetic latitude, longitude (rad) and ellipsoidal height (m)
+for the given ellipsoid (default ellipsoid is WGS84).
+
+# Notes
+
+* The transformation is direct without iterations as [1] introduced the need to iterate for
+near Earth positions.
+* [2] is an updated of increased accuracy of [1]. The former is used in this implementation
+although the latter implementation is commented in the code.
+* Model becomes unstable if latitude is close to 90º. An alternative equation
+ can be found in [2] equation (16) but has not been implemented.
+
+ # References
+1. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey review, 23(181), 323-327.
+2. Bowring, B. R. (1985). The accuracy of geodetic latitude and height equations. Survey Review, 28(218), 202-206.
+
+"""
+function ecef2llh(xecef, yecef, zecef; ellipsoid=WGS84)
+
+    x, y, z = xecef, yecef, zecef
+    e = sqrt(ellipsoid.e2);
+    e2 = ellipsoid.e2
+    ϵ2 = ellipsoid.ϵ2
+    a = ellipsoid.a
+    b = ellipsoid.b
+
+    p = sqrt(x*x + y*y)
+    R = sqrt(p*p + z*z)
+    θ = atan(z, p)
+    # [1] equation (1) does not change in [2]
+    lon = atan(y, x)
+    # u -> geographical latitude
+    # [1] below equation (4) and [2] equation (6)
+    # This lead to errors in latitud with maximum value 0.0018"
+    #u = atan(a/b * z/x)
+
+    # [2] equation (17) If the latitude is also required to be very accurate
+    # for outer-space positions then the value of u for (6) should be obtained
+    # from:
+    u = atan(b*z / (a*p) * (1 + ϵ2 * b / R))
+    # [1] equation (4)
+    #lat = atan((z + ϵ2 * b * sin(u)^3) / (x - e2 * a * cos(u)^3))
+    # [2] equation (18)
+    lat = atan((z + ϵ2 * b * sin(u)^3) / (p - e2 * a * cos(u)^3))
+    # [2] after equation (1)
+    v = a / sqrt(1.0 - e2*sin(lat)^2)
+    # [2] equation (7)
+    # height = p*cos(lat) + z*sin(lat) - a*a / v
+    # equivalent to [2] equation (8)
+    height = R * cos(lat - θ) - a*a / v
+    # which is insensitive to the error in latitude calculation (The influence
+    # is of order 2 [2] equation (12))
+    return [lat, lon, height]
+end
