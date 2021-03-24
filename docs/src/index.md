@@ -30,9 +30,16 @@ Run tests:
 
 ### v0.1.2-dev
 
+#### New
+
+- [`Ellipsoid`](@ref) type with some common ellipsoids such as `WGS84`.
+- Transformation ([`ecef2llh`](@ref)) from ECEF (Earth Centered Earth Fixed) to LLH (latitude, longitude, height) and viceversa ([`llh2ecef`](@ref)) given the reference ellipsoid.
+- Rotation ([`horizon2ecef`](@ref)) from local horizon to ECEF axis and vicecersa ([`ecef2horizon`](@ref)).
+
+
 #### Enhancements
 
-- `coordinated_turn_bank(ψ_dot, α, β, tas, γ[, g])` now accepts gravity as optional argument.
+- [`coordinated_turn_bank(ψ_dot, α, β, tas, γ, g)`](@ref) now accepts gravity as optional argument.
 
 ### v.0.1.1
 
