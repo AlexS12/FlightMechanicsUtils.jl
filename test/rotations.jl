@@ -165,3 +165,45 @@ end
     @test ones_ ≈ body2wind(exp_b2h_3..., 0., 45*pi/180.)
 end
 
+
+@testset "hor <-> ECEF" begin
+    xecef, yecef, zecef = 1.0, 10.0, 100.0
+    lat, lon = 0.0, 0.0
+    exp_xyz_hor = [100.0, 10.0 ,-1.0]
+    xyz_hor =  ecef2horizon(xecef, yecef, zecef, lat, lon)
+    @test isapprox(xyz_hor, exp_xyz_hor)
+
+    exp_xyz_ecef = [xecef, yecef, zecef]
+    xyz_ecef = horizon2ecef(exp_xyz_hor..., lat, lon)
+    @test isapprox(xyz_ecef, exp_xyz_ecef)
+
+    lat, lon = pi/2.0, 0.0
+    exp_xyz_hor = [-1.0, 10.0 ,-100.0]
+    xyz_hor =  ecef2horizon(xecef, yecef, zecef, lat, lon)
+    @test isapprox(xyz_hor, exp_xyz_hor)
+
+    exp_xyz_ecef = [xecef, yecef, zecef]
+    xyz_ecef = horizon2ecef(exp_xyz_hor..., lat, lon)
+    @test isapprox(xyz_ecef, exp_xyz_ecef)
+
+    lat, lon = 0.0, pi/2.0
+    exp_xyz_hor = [100.0, -1.0 ,-10.0]
+
+    xyz_hor =  ecef2horizon(xecef, yecef, zecef, lat, lon)
+    @test isapprox(xyz_hor, exp_xyz_hor)
+
+
+    exp_xyz_ecef = [xecef, yecef, zecef]
+    xyz_ecef = horizon2ecef(exp_xyz_hor..., lat, lon)
+    @test isapprox(xyz_ecef, exp_xyz_ecef)
+
+    lat, lon = pi/2.0, pi/2.0
+    exp_xyz_hor = [-10.0, -1.0 ,-100.0]
+
+    xyz_hor =  ecef2horizon(xecef, yecef, zecef, lat, lon)
+    @test isapprox(xyz_hor, exp_xyz_hor)
+
+    exp_xyz_ecef = [xecef, yecef, zecef]
+    xyz_ecef = horizon2ecef(exp_xyz_hor..., lat, lon)
+    @test isapprox(xyz_ecef, exp_xyz_ecef)
+end

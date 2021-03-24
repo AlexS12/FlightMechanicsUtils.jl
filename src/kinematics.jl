@@ -20,7 +20,8 @@ Every vector needs to be expressed in the same coordinate system.
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. (Section 1.3, page 26)
+1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls
+   design, and autonomous systems. John Wiley & Sons. (Section 1.3, page 26)
 """
 function rigid_body_velocity(vel_P, ω, r_PQ)
     vel_Q = vel_P + ω × r_PQ
@@ -47,7 +48,8 @@ being:
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. (Section 1.3, Formaula 1.3-14c, page 26)
+1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls
+   design, and autonomous systems. John Wiley & Sons. (Section 1.3, Formaula 1.3-14c, page 26)
 """
 function rigid_body_acceleration(acc_P, ω, ω_dot, r_PQ)
     acc_Q = acc_P + ω × (ω × r_PQ) + ω_dot × r_PQ
@@ -67,7 +69,8 @@ Transform body angular velocity (p, q, r) [rad/s] to Euler angles rates (ψ_dot,
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-4) (page 20)
+1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation:
+   dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-4) (page 20)
 """
 function pqr_2_ψθϕ_dot(p, q, r, θ, ϕ)
 
@@ -95,7 +98,8 @@ r) [rad/s] given the euler angles (θ, ϕ) [rad] using kinematic angular equatio
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-3) (page 20)
+1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation:
+   dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.4-3) (page 20)
 """
 function ψθϕ_dot_2_pqr(ψ_dot, θ_dot, ϕ_dot, θ, ϕ)
 
@@ -121,8 +125,9 @@ Transform body angular velocity (p, q, r) [rad/s] to quaternion rates [1/s].
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.8-15) (page 51)
-
+1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation:
+   dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (1.8-15)
+   (page 51).
 """
 function pqr_2_quat_dot(p, q, r, q0, q1, q2, q3)
 
@@ -153,7 +158,9 @@ respect to an inertial reference frame.
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-6b) (page 78)
+1. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation:
+   dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-6b)
+   (page 78).
 """
 function uvw_to_tasαβ(u, v, w)
 
@@ -178,8 +185,11 @@ direction of airspeed. It will concide whith TAS for no wind.
 [`tasαβ_dot_to_uvw_dot`](@ref)
 
 # References
-1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Equation 3.33 (page 44).
-2. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-10) (page 81).
+1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and
+   practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Equation 3.33 (page 44).
+2. Stevens, B. L., Lewis, F. L., & Johnson, E. N. (2015). Aircraft control and simulation:
+   dynamics, controls design, and autonomous systems. John Wiley & Sons. Equation (2.3-10)
+   (page 81).
 """
 function uvw_dot_to_tasαβ_dot(u, v, w, u_dot, v_dot, w_dot)
 
@@ -209,7 +219,9 @@ Obatain body velocity derivatives given velocity in wind axis and its derivative
 
 # References
 
-1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Derived from equation 3.32 (page 44).
+1. Morelli, Eugene A., and Vladislav Klein. Aircraft system identification: Theory and
+   practice. Williamsburg, VA: Sunflyte Enterprises, 2016. Derived from equation 3.32
+   (page 44).
 """
 function tasαβ_dot_to_uvw_dot(tas, α, β, tas_dot, α_dot, β_dot)
     u_dot = tas_dot * cos(α) * cos(β) - tas * (α_dot * sin(α) * cos(β) + β_dot * cos(α) * sin(β))
@@ -231,7 +243,9 @@ Inertial velocity and aerodynamic velocity are equivalent in the absence of wind
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. (Section 3.6, equation 3.6-3, page 187)
+1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls
+   design, and autonomous systems. John Wiley & Sons. (Section 3.6, equation 3.6-3,
+   page 187)
 """
 function rate_of_climb_constrain_no_wind(γ, α, β, ϕ)
     a = cos(α) * cos(β)

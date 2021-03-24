@@ -26,7 +26,15 @@ export euler_angles, quaternions, rotation_matrix_zyx
 export body2horizon, body2wind
 export wind2body, wind2horizon
 export horizon2body, horizon2wind
+export horizon2ecef, ecef2horizon
 include("rotations.jl")
+
+export Ellipsoid
+export Clarke1866, Clarke1880, International, Bessel, Everest, ModifiedEverest,
+    AustralianNational, SouthAmerican1969, Airy, ModifiedAiry, Hough, Fischer1960SouthAsia,
+    Fischer1960Mercury, Fischer1968, WGS60, WGS66, WGS72, WGS84
+export llh2ecef, ecef2llh
+include("ellipsoid.jl")
 
 export qc2cas, qc2eas, qc2tas
 export cas2eas, cas2tas

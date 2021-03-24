@@ -14,7 +14,8 @@ pressure between impact pressure and static pressure.
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 13, formula 2.13)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 13, formula 2.13)
 """
 function qc2cas(qc)
     cas = sqrt((2*γ_AIR*p0) / ((γ_AIR - 1) * ρ0) * ((qc / p0 + 1) ^ ((γ_AIR - 1) / γ_AIR) - 1))
@@ -31,7 +32,8 @@ and p.
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 12, based on formula 2.11)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 12, based on formula 2.11)
 """
 function qc2tas(qc, ρ, p)
     tas2 = (2*γ_AIR*p) / ((γ_AIR - 1) * ρ0) * ((qc/p + 1) ^ ((γ_AIR - 1) / γ_AIR) - 1) * ρ0/ρ
@@ -63,7 +65,8 @@ altitude (ρ).
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 13, formula 2.15)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 13, formula 2.15)
 """
 function tas2eas(tas, ρ)
     eas = tas * sqrt(ρ / ρ0)
@@ -79,7 +82,8 @@ altitude (ρ).
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 13, formula 2.15)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 13, formula 2.15)
 """
 function eas2tas(eas, ρ)
     tas = eas / sqrt(ρ / ρ0)
@@ -161,7 +165,8 @@ Calculate incompressible dynamic pressure from true airspeed (tas) and density
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 13, formula 2.14)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 13, formula 2.14)
 """
 function incompressible_qinf(tas, ρ)
     return 0.5 * ρ * tas*tas
@@ -181,7 +186,8 @@ Two different models are used depending on the Mach number:
 
 # References
 
-1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd. (page 12)
+1. Ward, D. T. (1993). Introduction to flight test engineering. Elsevier Science Ltd.
+   (page 12)
 2. Fundamentals of Aerdynamics, 5th edition, J.D.Anderson Jr (page 550)
 """
 function compressible_qinf(M, p)

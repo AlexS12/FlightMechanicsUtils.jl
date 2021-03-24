@@ -10,8 +10,14 @@ This is a suite for Flight Mechanics written in Julia. The purpose of this packa
 At the moment, it covers:
 
 - International Standard Atmosphere.
-- Transformations between common coordinate systems in Flight Mechanics problems (body, horizon, wind) supporting Euler angles and quaternions.
-- Anemometric functions.
+- Transformations between common coordinate systems in Flight Mechanics problems (body, horizon, wind, ECEF) supporting Euler angles and quaternions.
+- Kinematics & Dynamics:
+  - Rigid solid velocity and acceleration fields.
+  - Angular kinematic equations.
+  - Steiner theorem:to determine the moment of inertia of a rigid body about any axis.
+  - Trimmer constrains for leveled flight, climbs and turns.
+- Anemometric functions (tas, cas, eas, dynamic pressure).
+- ECEF (Earth Centered Earth Fixed) <---> LLH (Latitude Longitude Height) conversions.
 
 
 ## Install

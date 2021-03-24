@@ -9,8 +9,14 @@ This is a suite for Flight Mechanics written in Julia. The purpose of this packa
 At the moment, it covers:
 
 - International Standard Atmosphere.
-- Transformations between common coordinate systems in Flight Mechanics problems (body, horizon, wind) supporting Euler angles and quaternions.
-- Anemometric functions.
+- Transformations between common coordinate systems in Flight Mechanics problems (body, horizon, wind, ECEF) supporting Euler angles and quaternions.
+- Kinematics & Dynamics:
+  - Rigid solid velocity and acceleration fields.
+  - Angular kinematic equations.
+  - Steiner theorem:to determine the moment of inertia of a rigid body about any axis.
+  - Trimmer constrains for leveled flight, climbs and turns.
+- Anemometric functions (tas, cas, eas, dynamic pressure).
+- ECEF (Earth Centered Earth Fixed) <---> LLH (Latitude Longitude Height) conversions.
 
 ## Install
 
@@ -30,9 +36,16 @@ Run tests:
 
 ### v0.1.2-dev
 
+#### New
+
+- [`Ellipsoid`](@ref) type with some common ellipsoids such as `WGS84`.
+- Transformation ([`ecef2llh`](@ref)) from ECEF (Earth Centered Earth Fixed) to LLH (latitude, longitude, height) and viceversa ([`llh2ecef`](@ref)) given the reference ellipsoid.
+- Rotation ([`horizon2ecef`](@ref)) from local horizon to ECEF axis and vicecersa ([`ecef2horizon`](@ref)).
+
+
 #### Enhancements
 
-- `coordinated_turn_bank(ψ_dot, α, β, tas, γ[, g])` now accepts gravity as optional argument.
+- [`coordinated_turn_bank(ψ_dot, α, β, tas, γ, g)`](@ref) now accepts gravity as optional argument.
 
 ### v.0.1.1
 
