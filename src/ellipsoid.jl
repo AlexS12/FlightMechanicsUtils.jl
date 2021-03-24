@@ -1,5 +1,6 @@
 @doc raw"""
     Ellipsoid(a, b, f, finv, e2, ϵ2, name)
+    Ellipsoid(a, finv, name)
 
 Earth ellipsoid model.
 
@@ -27,10 +28,6 @@ Eccentricity (first eccentricity), ``e``:
 Second eccentricity, ``ϵ```:
 ``ϵ^2 = \frac{a^2 - b^2}{b^2} = \frac{f (2 - f)}{(1 - f)^2}``
 
-# See also
-
-[`Ellipsoid(a, finv, name)`](@ref)
-
 # References
 
 1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Section 1.6 (page 23)
@@ -55,12 +52,6 @@ struct Ellipsoid
 end
 
 
-"""
-    Ellipsoid(a, finv, name)
-
-Earth ellipsoid model from semi-major axis, a (m), and inverse of falttening, f.
-
-"""
 function Ellipsoid(a, finv, name)
     f = 1 / finv
     b = a * (1 - f)
