@@ -8,7 +8,7 @@ Earth ellipsoid model.
 
 - `a::Real`: semi-major axis (m).
 - `b::Real`: semi-minor axis (m).
-- `f::Real`: flattening.
+- `f::Real`: flattening (``f``).
 - `finv::Real`: inverse of flattening (``f^{-1}``).
 - `e2::Real`: eccentricity squared.
 - `ϵ2::Real`: second eccentricity squared.
@@ -19,14 +19,18 @@ Earth ellipsoid model.
 ``a`` is the semi-major axis, ``b`` is the semi-minor axis. Ellipsoids are normally defined
 by ``a`` and ``f^{-1}``. The rest of parameters are derived.
 
-Flattening, ``f``:
-``f = \frac{a-b}{a} = a - \frac{b}{a}``
-
-Eccentricity (first eccentricity), ``e``:
-``e^2 = \frac{a^2 - b^2}{a^2} = f (2 - f)``
-
-Second eccentricity, ``ϵ```:
-``ϵ^2 = \frac{a^2 - b^2}{b^2} = \frac{f (2 - f)}{(1 - f)^2}``
+- Flattening:
+```math
+f = 1 - \frac{b}{a}
+```
+- Eccentricity (first eccentricity):
+```math
+e^2 = \frac{a^2 - b^2}{a^2} = f (2 - f)
+```
+- Second eccentricity:
+```math
+ϵ^2 = \frac{a^2 - b^2}{b^2} = \frac{f (2 - f)}{(1 - f)^2}
+```
 
 # References
 
@@ -117,11 +121,11 @@ for the given ellipsoid (default ellipsoid is WGS84).
 # Notes
 
 * The transformation is direct without iterations as [1] introduced the need to iterate for
-near Earth positions.
-* [2] is an updated of increased accuracy of [1]. The former is used in this implementation
-although the latter implementation is commented in the code.
+  near Earth positions.
+* [2] is an update of increased accuracy of [1]. The former is used in this implementation
+  although the latter implementation is commented in the code.
 * Model becomes unstable if latitude is close to 90º. An alternative equation
- can be found in [2] equation (16) but has not been implemented.
+  can be found in [2] equation (16) but has not been implemented.
 
  # References
 

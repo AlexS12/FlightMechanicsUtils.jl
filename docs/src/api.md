@@ -15,6 +15,15 @@ R_AIR
 gD
 ```
 
+
+## Ellipsoid
+
+```@autodocs
+Modules = [FlightMechanicsUtils]
+Pages   = ["ellipsoid.jl"]
+Private = false
+```
+
 ## Rotations
 
 ### Coordinate systems
