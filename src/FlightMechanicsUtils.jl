@@ -26,6 +26,7 @@ export euler_angles, quaternions, rotation_matrix_zyx
 export body2horizon, body2wind
 export wind2body, wind2horizon
 export horizon2body, horizon2wind
+export horizon2ecef, ecef2horizon
 include("rotations.jl")
 
 export Ellipsoid

@@ -180,3 +180,27 @@ function horizon2wind(x, y, z, χ, γ, μ)
     rv = transpose(rotation_matrix_zyx(χ, γ, μ)) * v
     return rv
 end
+
+
+"""
+    ecef2horizon(x, y, z, lat, lon)
+
+Transform the vector coordintes (x, y, z) given in ECEF (Earth Fixed Earth Centered)
+coordinates to local horizon coordinates using geodetic latitude and longitude (rad).
+"""
+function ecef2horizon(x, y, z, lat, lon)
+    v = @SVector [x, y, z]
+    rv = transpose(rotation_matrix_zyx(lon, -lat - π/2, 0)) * v
+end
+
+
+"""
+    horizon2ecef(x, y, z, lat, lon)
+
+Transform the vector coordintes (x, y, z) given in local horizon axis to ECEF (Earth Fixed
+Earth Centered) using geodetic latitude and longitude (rad).
+"""
+function horizon2ecef(x, y, z, lat, lon)
+    v = @SVector [x, y, z]
+    rv = rotation_matrix_zyx(lon, -lat - π/2, 0) * v
+end
