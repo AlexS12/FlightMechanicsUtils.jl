@@ -34,9 +34,12 @@ e^2 = \frac{a^2 - b^2}{a^2} = f (2 - f)
 
 # References
 
-1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls design, and autonomous systems. John Wiley & Sons. Section 1.6 (page 23)
-2. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American Institute of Aeronautics and Astronautics. Chapter 4 (Nomenclature differs from 1).
-3. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey review, 23(181), 323-327.
+1. Stevens, B. L., Lewis, F. L., (1992). Aircraft control and simulation: dynamics, controls
+   design, and autonomous systems. John Wiley & Sons. Section 1.6 (page 23)
+2. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American
+   Institute of Aeronautics and Astronautics. Chapter 4 (Nomenclature differs from 1).
+3. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey
+   review, 23(181), 323-327.
 """
 struct Ellipsoid
     "Semi-major axis (m)."
@@ -95,7 +98,8 @@ given ellipsoid (default ellipsoid is WGS84).
 
 # References
 
-1. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American Institute of Aeronautics and Astronautics. (Page 75, equations 4.20, 4.21, 4.22)
+1. Rogers, R. M. (2007). Applied mathematics in integrated navigation systems. American
+   Institute of Aeronautics and Astronautics. (Page 75, equations 4.20, 4.21, 4.22)
 """
 function llh2ecef(lat, lon, height; ellipsoid=WGS84)
     f = ellipsoid.f
@@ -129,8 +133,10 @@ for the given ellipsoid (default ellipsoid is WGS84).
 
  # References
 
-1. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey review, 23(181), 323-327.
-2. Bowring, B. R. (1985). The accuracy of geodetic latitude and height equations. Survey Review, 28(218), 202-206.
+1. Bowring, B. R. (1976). Transformation from spatial to geographical coordinates. Survey
+   review, 23(181), 323-327.
+2. Bowring, B. R. (1985). The accuracy of geodetic latitude and height equations. Survey
+   Review, 28(218), 202-206.
 """
 function ecef2llh(xecef, yecef, zecef; ellipsoid=WGS84)
 
