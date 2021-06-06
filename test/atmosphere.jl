@@ -2,7 +2,7 @@ using FlightMechanicsUtils
 using Test
 
 
-@testset "ISA1978" begin
+@testset "ISA1976" begin
     # Test sea level
     T, p, rho, a = atmosphere_isa(0.0)
     @test isapprox(T, 288.15)
